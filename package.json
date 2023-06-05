@@ -14,7 +14,7 @@
     "eshost": "github:CanadaHonk/eshost",
     "minimatch": "^3.0.4",
     "rxjs": "^6.4.0",
-    "test262-stream": "^1.3.0",
+    "test262-stream": "github:CanadaHonk/test262-stream",
     "yargs": "^13.2.2"
   },
   "author": "Brian Terlson",
