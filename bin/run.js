@@ -169,8 +169,8 @@ if (!acceptVersion) {
 
 const stream = new TestStream(test262Dir, includesDir, acceptVersion, argv._);
 
+global.totalTests = 0;
 let tests = stream.pipe(filter(filterByFeatureInclude)).pipe(filter(filterByFeatureExclude)).pipe(map(insertPrelude));
-global._tests_ = tests;
 if (preprocessor) {
   tests = tests.pipe(filter(preprocessor));
 }
@@ -202,6 +202,8 @@ function printVersion() {
 }
 
 function insertPrelude(test) {
+  global.totalTests++;
+
   const index = test.insertionIndex;
   if (index === -1) {
     return test;
