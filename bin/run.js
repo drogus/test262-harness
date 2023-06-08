@@ -106,12 +106,14 @@ let timeout = argv.timeout || DEFAULT_TEST_TIMEOUT;
 let transform, transformer;
 let preprocessor;
 
+console.error(argv);
+
 if (argv.transformer) {
   const transformerPath = path.isAbsolute(argv.transformer) ?
     argv.transformer : path.join(process.cwd(), argv.transformer)
 
   transform = transformer = require(transformerPath);
-  console.log('transformer:', transformerPath, transformer);
+  console.error('transformer:', transformerPath, transformer);
 }
 
 if (argv.preprocessor) {
