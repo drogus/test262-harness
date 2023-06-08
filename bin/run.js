@@ -111,6 +111,7 @@ if (argv.transformer) {
     argv.transformer : path.join(process.cwd(), argv.transformer)
 
   transform = transformer = require(transformerPath);
+  console.log('transformer:', transformerPath, transformer);
 }
 
 if (argv.preprocessor) {
