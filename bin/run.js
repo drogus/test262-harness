@@ -170,7 +170,7 @@ if (!acceptVersion) {
 const stream = new TestStream(test262Dir, includesDir, acceptVersion, argv._);
 
 let tests = stream.pipe(filter(filterByFeatureInclude)).pipe(filter(filterByFeatureExclude)).pipe(map(insertPrelude));
-
+global._tests_ = tests;
 if (preprocessor) {
   tests = tests.pipe(filter(preprocessor));
 }
