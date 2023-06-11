@@ -169,7 +169,7 @@ if (!acceptVersion) {
 
 const stream = new TestStream(test262Dir, includesDir, acceptVersion, argv._);
 
-let tests = stream.pipe(filter(filterByFeatureInclude)).pipe(filter(filterByFeatureExclude)).pipe(map(insertPrelude));
+let tests = stream.pipe(filter(filterByFeatureInclude)).pipe(filter(filterByFeatureExclude)).pipe(filter(filterByChunks)).pipe(map(insertPrelude));
 if (preprocessor) {
   tests = tests.pipe(filter(preprocessor));
 }
@@ -227,4 +227,14 @@ function filterByFeatureExclude(test) {
     return true;
   }
   return !featuresExclude.some(feature => (test.attrs.features || []).includes(feature));
+}
+
+let chunks, chunkNumber;
+function filterByChunks(test) {
+  if (!process.env.CHUNK) return true;
+
+  if (!chunks) chunks = JSON.parse(fs.readFileSync(process.env.CHUNKS_PATH, 'utf8'));
+  if (!chunkNumber) chunkNumber = parseInt(process.env.CHUNK_NUMBER);
+
+  return chunks[chunkNumber].includes(test.file);
 }
