@@ -231,7 +231,7 @@ function filterByFeatureExclude(test) {
 
 let chunks, chunkNumber;
 function filterByChunks(test) {
-  if (!process.env.CHUNK) return true;
+  if (!process.env.CHUNKS_PATH) return true;
 
   if (!chunks) chunks = JSON.parse(fs.readFileSync(process.env.CHUNKS_PATH, 'utf8'));
   if (!chunkNumber) chunkNumber = parseInt(process.env.CHUNK_NUMBER);
