@@ -11,10 +11,10 @@
     "test": "node_modules/.bin/tap --no-esm -T test/*.js"
   },
   "dependencies": {
-    "eshost": "github:CanadaHonk/eshost",
+    "eshost": "github:test262-fyi/eshost",
     "minimatch": "^3.0.4",
     "rxjs": "^6.4.0",
-    "test262-stream": "github:CanadaHonk/test262-stream",
+    "test262-stream": "github:test262-fyi/test262-stream",
     "yargs": "^13.2.2"
   },
   "author": "Brian Terlson",
